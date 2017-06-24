@@ -1,0 +1,76 @@
+<!--
+  Generated template for the LandingPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="raga-black">
+    <ion-title  text-center>Welcome to Review Raga</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+
+<ion-content padding >
+  <ion-segment [(ngModel)]="landingOpt">
+    <ion-segment-button value="login">
+      Login
+    </ion-segment-button>
+    <ion-segment-button value="signup">
+      Sign Up
+    </ion-segment-button>
+  </ion-segment>
+
+  <div [ngSwitch]="landingOpt">
+    <ion-card *ngSwitchCase="'login'">
+      <div>
+        <page-login></page-login>
+      </div>
+      <ion-item-divider> Or </ion-item-divider>
+      
+      <ion-row>
+        <button ion-button (click)="loginUserWithFacebook" icon-right>   
+          Continue using Facebook
+          <ion-icon padding name="logo-facebook"></ion-icon>
+        </button>
+      </ion-row>
+      <ion-row>
+        <button ion-button (click)="loginUserWithGoogle()" icon-right>
+          Continue with Google
+          <ion-icon padding name="logo-google"></ion-icon>
+        </button>
+      </ion-row>
+    </ion-card>
+
+    <div *ngSwitchCase="'signup'">
+      <page-signup></page-signup>
+    </div>
+  </div>
+
+ <!-- <ion-card color="raga-black">
+    <ion-card-title text-center text-uppercase padding-vertical >{{title}}</ion-card-title>
+  </ion-card>
+  <ion-card color="raga-black">
+   <ion-card-content >
+      <button ion-button clear (click)="loginUserWithFacebook()" color="raga-white">
+      <ion-icon name="logo-facebook"></ion-icon>
+        Continue with Facebook
+      </button>
+      <ion-item-divider color="raga-black" text-center >or</ion-item-divider>
+      <button ion-button clear color="raga-white" (click)="loginUserWithGoogle()">
+        <ion-icon name="logo-google"></ion-icon>
+        Use desired Gmail Account
+      </button>
+      <ion-item-divider color="raga-black" text-center >or</ion-item-divider>
+      <button ion-button clear color="raga-white" (click)="openLoginPage()">Log In with Email</button>
+    </ion-card-content>
+  </ion-card>
+  <ion-item-divider color="raga-grey">OR Sign up in less than 60 seconds.</ion-item-divider>
+  <ion-card color="raga-grey">
+    <button ion-button block color="light" class="sign-up-btn" (click)="openSignUpPage()" text-capitalize>Create new account</button>
+  </ion-card>
+  -->
+</ion-content>

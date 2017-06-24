@@ -1,0 +1,9 @@
+{
+  "name": "adminDash",
+  "app_id": "",
+  "type": "ionic-angular",
+  "styles": [
+        "styles.css",
+        "./node_modules/firebaseui/dist/firebaseui.css"
+      ]
+}

@@ -1,0 +1,69 @@
+<!--
+  Generated template for the ProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="raga-black">
+    <ion-title text-center>Profile</ion-title>
+  </ion-navbar>
+  <button ion-button float-right clear (click)="logout()" color="raga-black">Logout</button>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-avatar item-center>
+        <img src="../../assets/icon/favicon.ico">
+      </ion-avatar>
+      <h2> Dear {{userInfo.displayName}}, keep this page updated to make best use of Review Raga </h2>
+    </ion-card-header>
+  </ion-card>
+  <ion-card color="raga-white">
+    <ion-card-header>
+      <ion-item-divider color="raga-black">This is the name you want in the search-engine results.</ion-item-divider> 
+        <ion-item>
+          <ion-label> Buisness Name  </ion-label>
+          <ion-input [(ngModel)]=displayData.buissnessName [ngModelOptions]="{standalone:true}" > {{displayData.buissnessName}}</ion-input>
+        </ion-item>  
+    </ion-card-header>
+    
+    <ion-card-content>
+      <ion-list>
+      
+        <ion-item>
+          <ion-label>Email id</ion-label>
+          <ion-input [(ngModel)]=displayData.emailid [ngModelOptions] = "{standalone:true}" > {{displayData.emailid}} </ion-input>
+        </ion-item>
+        <ion-item-divider> This will help us in maintaing a channel to send reports and other resources to you.</ion-item-divider>
+
+        <ion-item>
+            <ion-label> Phone </ion-label>
+            <ion-input [(ngModel)]=displayData.phoneNum [ngModelOptions] = "{standalone:true}">  {{displayData.phoneNum}} </ion-input>
+          </ion-item>
+          <ion-item-divider> This will provide another point of contact for us and your customers.</ion-item-divider>
+        
+        <ion-item> 
+          <ion-label>Address</ion-label>
+          <ion-input [(ngModel)]=displayData.buisnessAddress [ngModelOptions]="{standalone:true}"> {{displayData.buisnessAddress}}  </ion-input>
+        </ion-item>
+        <ion-item-divider> To bring your buisness on the map where most of the reviews matter. </ion-item-divider>
+      
+      </ion-list>
+      
+     
+      </ion-card-content>
+
+  </ion-card>
+
+  <ion-card >
+    <button ion-button (click)="bindData()" color="secondary"> UPDATE  </button>
+    
+  </ion-card>
+  
+</ion-content>
