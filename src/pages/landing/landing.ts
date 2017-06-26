@@ -2,7 +2,6 @@ import { Observable } from 'rxjs/Observable';
 import * as firebase from 'firebase/app';
 import { AngularFireAuth } from 'angularfire2/auth';
 
-import { ProfilePage } from './../profile/profile';
 import { TabsPage } from './../tabs/tabs';
 import { CustomAuthProvider } from './../../providers/auth/auth';
 import { LoginPage } from './../login/login';
@@ -38,7 +37,8 @@ export class LandingPage {
   }
 
   ionViewWillEnter(){
-   if(this._auth.userInfo()){
+   if(this._auth.userInfo()!==null){
+     //console.log(this._auth.userInfo(),"From landing");
      this.uid = this._auth.userInfo().uid;
      this.navCtrl.setRoot(TabsPage, {uid : this.uid});
    }
@@ -61,6 +61,7 @@ export class LandingPage {
     this.navCtrl.push(LoginPage);
   }
   fbsuccess(){
+    //console.log(this._auth.userInfo() , "From facebook");
     this.uid = this._auth.userInfo().uid;
     this.navCtrl.setRoot(TabsPage, {uid : this.uid});
   }

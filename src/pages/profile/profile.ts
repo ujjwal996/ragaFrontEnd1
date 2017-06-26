@@ -1,3 +1,4 @@
+import { LandingPage } from './../landing/landing';
 
 import { CustomAuthProvider } from './../../providers/auth/auth';
 
@@ -37,9 +38,10 @@ export class ProfilePage {
       longUrl:'',
       shortUrl:''
     },
-    message : "",
+    inviteMessage : "",
     photoUrl:"",
-    emailid:""
+    emailid:"",
+    photoURL:''
    }
 
   user : Observable<firebase.User>;
@@ -53,32 +55,42 @@ export class ProfilePage {
    public afauth: AngularFireAuth, public db:AngularFireDatabase, public _auth:CustomAuthProvider) {
     this.user = afauth.authState;   
     this.uid = this.navParams.data;
+    console.log("Profile page", this.uid);
     this.currentClientObject = this.db.object("profile/"+this.uid);
     //this.loginData = this.loginInfo.providerData[0] || {};
-    this.authInfo = this._auth.userInfo();
+    //this.authInfo = this._auth.userInfo();
   }
 
   ionViewWillEnter(){
     this.currentClientObject.subscribe((res)=>{
-      this.displayData = res;
-      console.log("display data from firebase: " , this.displayData);
+      console.log(res);
+      if(res.$value!==null){
+        this.displayData = res;
+        console.log("display data from firebase: " , this.displayData);
+      }
+      
+      
     });
   }
   
 
   bindData(){
     this.currentClientObject.set( this.displayData ).then((res)=>{
+      console.log(res);
       let alert = this.alertCtrl.create({
         title : 'Data Saved',
-        subTitle : 'You can come and edit this data whenever you want',
+        subTitle : 'You can come back and edit this data whenever you want. But be careful',
         buttons:['OK']
       });
       alert.present();
+    },(err)=>{
+      console.log(err);
     });
     
   }
   logout(){
     this._auth.logout();
+    this.navCtrl.setRoot(LandingPage);
   }
 
 }

@@ -1,5 +1,4 @@
 import { fbaseConfig } from './../config/firebaseConfig';
-import { Landing2Page } from './../pages/landing2/landing2';
 import { LandingPage } from './../pages/landing/landing';
 import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
@@ -15,7 +14,7 @@ import * as firebase from 'firebase';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = Landing2Page;
+  rootPage:any = LandingPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     firebase.initializeApp(fbaseConfig),

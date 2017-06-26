@@ -9,6 +9,7 @@
   <ion-navbar color = "raga-black">
     <ion-title text-center>Resources</ion-title>
   </ion-navbar>
+  <button ion-button float-right clear (click)="logout()" color="raga-black">Logout</button>
 
 </ion-header>
 
@@ -18,43 +19,39 @@
   
 <div color="raga-black">
   <ion-grid color="raga-black">
+
+    <ion-row>
+      <ion-col col-12>
+        <button ion-button (click)= "pushPreferenceForm()" block clear > My Buisness Image </button>
+      </ion-col>
+    </ion-row> 
     
     <ion-row >
       <ion-col col-4 padding >
-        Funnel Link for Customers
+        <ion-item>Funnel Link for Customers</ion-item>
       </ion-col>
       <ion-col col-8>
         <ion-card>
           <ion-item color="raga-black">
-            <a color="raga-red" href="https://druvopen.typeform.com/to/WClkLB" target="_blank">User Survey form</a>
+            <a color="raga-red" href="resData.link.shortUrl" target="_blank">{{resData.shortUrl}}</a>
           </ion-item>
         </ion-card>
       </ion-col>
     </ion-row>
 
+ 
+
     <ion-row>
-      <ion-col col-12>
-        <button ion-button (click)= "pushPreferenceForm()" > My Buisness Image </button>
+      <ion-col col-4 >
+        <ion-item> Invite Message Text</ion-item>
       </ion-col>
-      
-
-        <!--<ion-card *ngIf="showSetting" color="primary">
-          <form [formGroup]="personalizeForm" (ngSubmit)="onSubmit(personalizeForm.value)"  >
-            <ion-label>Sample Form</ion-label>
-            <ion-item>
-              <ion-label>Color Choice</ion-label>
-              <ion-input formControlName = "color" > </ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-label>Vibe Choice</ion-label>
-              <ion-input formControlName = "vibe" > </ion-input>
-            </ion-item>
-          </form>
-          
-        </ion-card>-->
-
-      
+      <ion-col col-12>
+        <ion-item>
+          <ion-input [(ngModel)]="resData.inviteMessage">{{resData.inviteMessage}}</ion-input>
+        </ion-item>
+      </ion-col>
     </ion-row>
+    
 
   </ion-grid>
 </div>

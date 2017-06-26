@@ -15,13 +15,17 @@ import {AngularFireDatabase , FirebaseListObservable } from "angularfire2/databa
 })
 export class UserDataPage {
   users: FirebaseListObservable<any[]> ;
+  uid:string;
   constructor(public navCtrl: NavController, public navParams: NavParams , public db: AngularFireDatabase) {
-    this.users = db.list('/data/users');
-    console.log(this.users);
+    this.uid = this.navParams.data;
+    this.users = db.list('reviewforms/'+this.uid);
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad UserdataPage');
+  }
+  ionViewWillEnter(){
+   
   }
 
 }

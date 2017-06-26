@@ -17,6 +17,7 @@ export class TabsPage {
   tab4Root = UserDataPage;
   uid:any;
   constructor(public navParams: NavParams) {
-    this.uid = this.navParams.get("uid")
+    this.uid = this.navParams.get("uid");
+    console.log("Tabs page",this.uid);
   }
 }

@@ -1,3 +1,5 @@
+import { LandingPage } from './../landing/landing';
+import { CustomAuthProvider } from './../../providers/auth/auth';
 import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
 import { PreferenceFormPage } from './../preference-form/preference-form';
 import { FormBuilder } from '@angular/forms';
@@ -21,9 +23,16 @@ export class EngagementsPage {
   showSetting:boolean=false;
   personalizeForm : any;
   uid: any;
-  clientData={};
+  resData={
+    link:{
+      shortUrl: "",
+      longUrl:""
+    },
+    inviteMessage:""
+  };
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private fb : FormBuilder, public afdb : AngularFireDatabase) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private fb : FormBuilder, public afdb : AngularFireDatabase,
+      public _auth : CustomAuthProvider) {
     this.uid= this.navParams.data;
     console.log(this.uid);
     this.currentClientObject = this.afdb.object('profile/'+this.uid);
@@ -35,13 +44,18 @@ export class EngagementsPage {
   ionViewWillEnter(){
     
     this.currentClientObject.subscribe((res)=>{
-      this.clientData = res;
+      this.resData = res;
     })
 
   }
 
   pushPreferenceForm(){
     this.navCtrl.push(PreferenceFormPage);
+  }
+
+  logout(){
+    this._auth.logout();
+    this.navCtrl.setRoot(LandingPage);
   }
 
 }

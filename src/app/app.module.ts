@@ -1,6 +1,3 @@
-
-import { Landing2Page } from './../pages/landing2/landing2';
-
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
@@ -35,9 +32,8 @@ import { ProfileProvider } from '../providers/profile/profile';
 // AF2 Settings
 import { fbaseConfig } from '../config/firebaseConfig';
 
-import * as firebase from 'firebase/app';
 
-//FIREBASEUI-ANGULAR
+/*FIREBASEUI-ANGULAR
 import { AuthMethods, AuthProvider, FirebaseUIAuthConfig, FirebaseUIModule } from 'firebaseui-angular';
 
 const firebaseUiAuthConfig: FirebaseUIAuthConfig = {
@@ -51,7 +47,7 @@ const firebaseUiAuthConfig: FirebaseUIAuthConfig = {
   ],
   method: AuthMethods.Popup
 };
-
+*/
 @NgModule({
   declarations: [
     MyApp,
@@ -64,8 +60,7 @@ const firebaseUiAuthConfig: FirebaseUIAuthConfig = {
     LoginPage,
     LandingPage,
     PreferenceFormPage,
-    ClickPage,
-    Landing2Page
+    ClickPage
   ],
   imports: [
     BrowserModule,
@@ -89,8 +84,8 @@ const firebaseUiAuthConfig: FirebaseUIAuthConfig = {
     LoginPage,
     LandingPage,
     PreferenceFormPage,
-    ClickPage,
-    Landing2Page
+    ClickPage
+    
   ],
   providers: [
     StatusBar,
